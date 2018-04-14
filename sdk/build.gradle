@@ -1,0 +1,42 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 26
+
+
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+// 发布到本地库 -----------------------------------------
+apply plugin: 'maven'
+uploadArchives{
+    repositories {
+        mavenDeployer {
+            repository(url: uri('../repository'))
+            pom.groupId = "com.deepin"
+            pom.artifactId = "mysdk"
+            pom.version = "1.0.1"
+        }
+    }
+
+}
+
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+}
