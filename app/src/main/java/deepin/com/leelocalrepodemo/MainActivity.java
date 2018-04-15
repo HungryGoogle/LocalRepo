@@ -13,6 +13,7 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ((TextView)findViewById(R.id.id_hello_world)).setText("Hello World From UI \nand \n" + MyCommon.getHelloWorld());
+        String strFromSDK = MyCommon.getHelloWorld();
+        ((TextView)findViewById(R.id.id_hello_world)).setText("Hello World From UI \nand \n" + strFromSDK);
     }
 }
